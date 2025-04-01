@@ -1,4 +1,4 @@
-class DoublyNode {
+export class DoublyNode {
   value: string;
   next: DoublyNode | null;
   prev: DoublyNode | null;
@@ -10,7 +10,7 @@ class DoublyNode {
   }
 }
 
-class DoublyLinkedList {
+export class DoublyLinkedList {
   private head: DoublyNode | null;
   private tail: DoublyNode | null;
   private size: number;
@@ -127,7 +127,6 @@ class DoublyLinkedList {
           current.next = temp;
           current = current.prev;
       }
-      
       if (temp) {
           this.tail = this.head;
           this.head = temp.prev;
