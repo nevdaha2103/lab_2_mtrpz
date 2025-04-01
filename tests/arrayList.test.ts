@@ -20,11 +20,11 @@ describe("ArrayList", () => {
     expect(list.length()).toBe(1);
   });
 
-  test("should return wrong value (test fail case)", () => {
+  test("should return correct value after delete", () => {
     let list = new ArrayList();
     list.append("X");
-    expect(list.delete(0)).toBe("Y");
-  });
+    expect(list.delete(0)).toBe("X");
+  });  
   
 
   test("should throw error on invalid delete index", () => {
