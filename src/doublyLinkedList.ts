@@ -31,22 +31,21 @@ export class DoublyLinkedList {
 
   delete(index: number): string {
     if (index < 0 || index >= this.size) throw new Error("Invalid index");
-
-    let current: Node | null = this.head;
+  
+    let current = this.head;
     for (let i = 0; i < index; i++) {
       current = current!.next;
     }
-
-    if (!current) throw new Error("Element not found");
-
-    if (current.prev) current.prev.next = current.next;
-    if (current.next) current.next.prev = current.prev;
-    if (current === this.head) this.head = current.next;
-    if (current === this.tail) this.tail = current.prev;
-
+  
+    const value = current!.value;
+    if (current!.prev) current!.prev.next = current!.next;
+    if (current!.next) current!.next.prev = current!.prev;
+    if (index === 0) this.head = current!.next;
+    if (index === this.size - 1) this.tail = current!.prev;
+  
     this.size--;
-    return current.value;
-  }
+    return value;
+  }  
 
   clear(): void {
     this.head = this.tail = null;
