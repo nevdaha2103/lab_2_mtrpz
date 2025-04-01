@@ -38,7 +38,7 @@ export class DoublyLinkedList {
   }
 
   insert(element: string, index: number): void {
-      if (index < 0 || index > this.size) throw new Error("Index out of bounds");
+    if (index < 0 || index > this.size) throw new Error("Invalid index");
       const newNode = new DoublyNode(element);
       if (index === 0) {
           if (this.head) {
@@ -64,26 +64,26 @@ export class DoublyLinkedList {
   }
 
   delete(index: number): string {
-      if (index < 0 || index >= this.size) throw new Error("Index out of bounds");
-      let deletedValue: string;
-      if (index === 0) {
-          deletedValue = this.head!.value;
-          this.head = this.head!.next;
-          if (this.head) this.head.prev = null;
-          if (this.size === 1) this.tail = null;
-      } else {
-          let current = this.head;
-          for (let i = 0; i < index; i++) {
-              current = current!.next;
-          }
-          deletedValue = current!.value;
-          if (current!.prev) current!.prev.next = current!.next;
-          if (current!.next) current!.next.prev = current!.prev;
-          if (!current!.next) this.tail = current!.prev;
-      }
-      this.size--;
-      return deletedValue;
-  }
+    if (index < 0 || index >= this.size) throw new Error("Invalid index"); 
+    let deletedValue: string;
+    if (index === 0) {
+        deletedValue = this.head!.value;
+        this.head = this.head!.next;
+        if (this.head) this.head.prev = null;
+        if (this.size === 1) this.tail = null;
+    } else {
+        let current = this.head;
+        for (let i = 0; i < index; i++) {
+            current = current!.next;
+        }
+        deletedValue = current!.value;
+        if (current!.prev) current!.prev.next = current!.next;
+        if (current!.next) current!.next.prev = current!.prev;
+        if (!current!.next) this.tail = current!.prev;
+    }
+    this.size--;
+    return deletedValue;
+}
 
   deleteAll(element: string): void {
       let current = this.head;
@@ -100,7 +100,7 @@ export class DoublyLinkedList {
   }
 
   get(index: number): string {
-      if (index < 0 || index >= this.size) throw new Error("Index out of bounds");
+    if (index < 0 || index >= this.size) throw new Error("Invalid index");
       let current = this.head;
       for (let i = 0; i < index; i++) {
           current = current!.next;
